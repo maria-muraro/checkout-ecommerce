@@ -21,7 +21,22 @@ function contarItens(itens) {
 // ===== SEÇÃO 2: CUPOM (estruturas condicionais) =====
 
 function aplicarCupom(subtotal, codigo) {
-  // TODO
+  let desconto = 0;
+
+  if(codigo === "DESC10"){
+    desconto = subtotal*0.10;
+
+  }else if(codigo === "DESC20" && subtotal >= 200){
+    desconto === subtotal*0.20;
+
+  }else if (codigo === "FRETEGRATIS"){
+    DESCONTO = 15;
+  }else{
+    //CUPOM INVÁLIDO OU NÃO LEGIVEL.
+    desconto = 0;
+  }
+  //impede que o desconto ultrapasse o subtotal.
+  return desconto = math.min(desconto,math.max(0,subtotal));
 }
 
 
