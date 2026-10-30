@@ -12,14 +12,34 @@ function contarItens(itens) {
 // ===== SEÇÃO 2: CUPOM (estruturas condicionais) =====
 
 function aplicarCupom(subtotal, codigo) {
-  // TODO
+  let desconto = 0;
+
+  if(codigo === "DESC10"){
+    desconto = subtotal*0.10;
+
+  }else if(codigo === "DESC20" && subtotal >= 200){
+    desconto === subtotal*0.20;
+
+  }else if (codigo === "FRETEGRATIS"){
+    DESCONTO = 15;
+  }else{
+    //CUPOM INVÁLIDO OU NÃO LEGIVEL.
+    desconto = 0;
+  }
+  //impede que o desconto ultrapasse o subtotal.
+  desconto = math.min(desconto,math.max(0,subtotal));
+
+  return{
+    desconto: desconto, total: math.max(0, subtotal - desconto)
+  };
 }
 
 
 // ===== SEÇÃO 3: CHECKOUT (integração) =====
 
 function finalizarCompra(itens, codigoCupom) {
-  return { subtotal: 0, desconto: 0, total: 0 }; // TODO: integrar carrinho e cupom
+  let subtotal = calcularSubtotal(itens);
+  return { subtotal: subtotal, desconto: 0, total: 0 };
 }
 
 
