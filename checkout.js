@@ -36,7 +36,7 @@ function aplicarCupom(subtotal, codigo) {
     desconto = 0;
   }
   //impede que o desconto ultrapasse o subtotal.
-  return desconto = math.min(desconto,math.max(0,subtotal));
+  return desconto = Math.min(desconto, Math.max(0,subtotal));
 }
 
 
@@ -44,7 +44,8 @@ function aplicarCupom(subtotal, codigo) {
 
 function finalizarCompra(itens, codigoCupom) {
   let subtotal = calcularSubtotal(itens);
-  return { subtotal: subtotal, desconto: 0, total: 0 }; // TODO: integrar carrinho e cupom
+  let desconto = aplicarCupom(subtotal, codigoCupom);
+  return { subtotal: subtotal, desconto: desconto, total: subtotal - desconto }; // TODO: integrar carrinho e cupom
 }
 
 
